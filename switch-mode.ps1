@@ -5,11 +5,14 @@ $currentTimeout = [convert]::ToInt32((powercfg /query SCHEME_BALANCED SUB_VIDEO 
 # Display the current timeout
 Write-Host "Current timeout for turning off the display when plugged in: $($currentTimeout) seconds"
 
+# Mode 1 timeout in minutes. (its 30 here)
 $newTimeoutInMinutes = 30
+# Mode 1 timeout in Seconds. (its 1800 here)
 if ($currentTimeout -eq 1800){
+#Mode 2 timeout in minutes. (its 1 here)
 $newTimeoutInMinutes = 1
 }
-# Set the new timeout for turning off the display when plugged in (replace <NewTimeoutInSeconds> with the desired value)
+# Set the new timeout for turning off the display when plugged in
 powercfg /change monitor-timeout-ac $newTimeoutInMinutes
 
 Write-Host "New timeout for turning off the display when plugged in set to: $newTimeoutInMinutes min"
